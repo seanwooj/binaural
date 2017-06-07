@@ -13,6 +13,14 @@ class App extends Component {
     beatHz: 12
   }
 
+  marks = {
+    1: "delta",
+    4: "theta",
+    8: "alpha",
+    12: "low beta",
+    15: "beta"
+  }
+
   componentDidMount() {
     this.bTone = new BinauralTone({baseHz: this.state.baseHz, beatHz: this.state.beatHz});
   }
@@ -35,7 +43,7 @@ class App extends Component {
   render() {
     return (
       <div className='container'>
-        <ToolTipSlider min={0.1} max={40} step={0.1} value={this.state.beatHz} onChange={this.updateBeatHz}/>
+        <ToolTipSlider min={0.1} max={20} step={0.1} marks={this.marks} value={this.state.beatHz} onChange={this.updateBeatHz}/>
         <button onClick={this.startTone}>Start</button>
         <button onClick={this.endTone}>Stop</button>
       </div>
